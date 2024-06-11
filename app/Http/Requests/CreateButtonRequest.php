@@ -16,7 +16,7 @@ class CreateButtonRequest extends FormRequest
     {
         return [
             'label' => 'required|string',
-            'type' => 'required|string|in:WINDOWS,IOS,ANDROID',
+            'platform' => 'required|string|in:windows,ios',
         ];
     }
 }

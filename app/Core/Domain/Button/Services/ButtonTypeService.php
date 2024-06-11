@@ -3,7 +3,7 @@
 namespace App\Core\Domain\Button\Services;
 
 use App\Core\Domain\Button\Entities\Button;
-use App\Core\Domain\Button\Factories\ButtonFactory;
+use App\Core\Domain\Attribute\Factories\ButtonFactory;
 
 class ButtonTypeService
 {
@@ -14,8 +14,8 @@ class ButtonTypeService
         $this->buttonFactory = $buttonFactory;
     }
 
-    public function initialize(string $label, string $type): Button
+    public function create(string $label, string $platform): Button
     {
-        return $this->buttonFactory->createButton($label, $type);
+        return $this->buttonFactory->create($label, $platform);
     }
 }

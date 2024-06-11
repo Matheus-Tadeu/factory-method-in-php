@@ -10,10 +10,10 @@ class WindowsButtonRepositoryTest extends TestCase
     public function testCreateButton()
     {
         $repository = new WindowsButtonRepository();
-        $button = $repository->create('Test');
+        $button = $repository->create('Test', 'windows');
 
         $this->assertEquals('Test', $button->getLabel());
-        $this->assertEquals('WINDOWS', $button->getType());
+        $this->assertEquals('windows', $button->getType());
         $this->assertInstanceOf(Button::class, $button);
     }
 }

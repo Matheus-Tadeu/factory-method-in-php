@@ -6,5 +6,5 @@ use App\Core\Domain\SocialMidia\Entities\SocialMedia;
 
 interface SocialMediaFactory
 {
-    public function createPost(string $platform, string $content): SocialMedia;
+    public function create(string $platform, string $content): SocialMedia;
 }

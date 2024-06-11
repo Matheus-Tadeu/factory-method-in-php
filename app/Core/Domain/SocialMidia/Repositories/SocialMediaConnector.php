@@ -6,9 +6,5 @@ use App\Core\Domain\SocialMidia\Entities\SocialMedia;
 
 interface SocialMediaConnector
 {
-    public function logIn(): bool;
-
-    public function logOut(): bool;
-
-    public function createPost($content): SocialMedia;
+    public function create(string $platform, string $content): SocialMedia;
 }

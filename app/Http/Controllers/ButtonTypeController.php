@@ -16,12 +16,12 @@ class ButtonTypeController extends BaseController
         $this->buttonTypeService = $buttonTypeService;
     }
 
-    public function create(CreateButtonRequest $request)
+    public function store(CreateButtonRequest $request)
     {
         try {
             $label = $request->input('label');
-            $type = $request->input('type');
-            $button = $this->buttonTypeService->initialize($label, $type);
+            $platform = $request->input('platform');
+            $button = $this->buttonTypeService->create($label, $platform);
             return response()->json($button->toArray(), 201);
         } catch (\InvalidArgumentException $e) {
             Log::error($e->getMessage());

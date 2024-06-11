@@ -4,9 +4,9 @@ namespace App\Providers;
 
 use App\Adapter\Infra\Button\IOSButtonRepository;
 use App\Adapter\Infra\Button\WindowsButtonRepository;
-use App\Adapter\Infra\SocialMedia\FacebookConnector;
-use App\Adapter\Infra\SocialMedia\LinkdinConnector;
-use App\Core\Domain\Button\Factories\ButtonFactory;
+use App\Adapter\Infra\SocialMedia\FacebookRepository;
+use App\Adapter\Infra\SocialMedia\LinkdinRepository;
+use App\Core\Domain\Attribute\Factories\ButtonFactory;
 use App\Core\Domain\Button\Factories\ButtonFactoryImpl;
 use App\Core\Domain\SocialMidia\Factories\SocialMediaFactory;
 use App\Core\Domain\SocialMidia\Factories\SociaMediaFactoryImpl;
@@ -21,15 +21,15 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(ButtonFactory::class, function ($app) {
             $buttonRepositories = [
-                'WINDOWS' => $app->make(WindowsButtonRepository::class),
-                'IOS' => $app->make(IOSButtonRepository::class),
+                'windows' => $app->make(WindowsButtonRepository::class),
+                'ios' => $app->make(IOSButtonRepository::class),
             ];
             return new ButtonFactoryImpl($buttonRepositories);
         });
         $this->app->bind(SocialMediaFactory::class, function ($app) {
             $socialMediaRepositories = [
-                'facebook' => $app->make(FacebookConnector::class),
-                'linkedin' => $app->make(LinkdinConnector::class),
+                'facebook' => $app->make(FacebookRepository::class),
+                'linkedin' => $app->make(LinkdinRepository::class),
             ];
             return new SociaMediaFactoryImpl($socialMediaRepositories);
         });

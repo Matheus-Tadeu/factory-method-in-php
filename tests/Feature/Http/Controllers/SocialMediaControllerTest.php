@@ -11,7 +11,7 @@ class SocialMediaControllerTest extends TestCase
     public function testPostToSocialMedia()
     {
         $socialMediaService = $this->createMock(SocialMediaService::class);
-        $socialMediaService->method('post')->willReturn(new SocialMedia('Conteudo', 'facebook'));
+        $socialMediaService->method('post')->willReturn(new SocialMedia( 'facebook', 'Conteudo'));
 
         $this->app->instance(SocialMediaService::class, $socialMediaService);
 
@@ -30,8 +30,8 @@ class SocialMediaControllerTest extends TestCase
 
         $response = $this->postJson('api/postToSocialMedia/instagram', ['content' => 'Conteudo']);
 
-        $response->assertStatus(400);
-        $response->assertJson(['message' => 'Invalid platform type: instagram']);
+        $response->assertStatus(422);
+        $response->assertJson(['message' => 'The selected platform is invalid.']);
     }
 
     public function testCreateWithInvalidType()
@@ -43,14 +43,14 @@ class SocialMediaControllerTest extends TestCase
 
         $response = $this->postJson('api/postToSocialMedia/invalid', ['content' => 'Conteudo']);
 
-        $response->assertStatus(400);
-        $response->assertJson(['message' => 'Invalid platform type: invalid']);
+        $response->assertStatus(422);
+        $response->assertJson(['message' => 'The selected platform is invalid.']);
     }
 
     public function testCreateWithoutcPlatform()
     {
         $response = $this->postJson('api/postToSocialMedia/invalid', ['content' => 'Conteudo']);
-        $response->assertStatus(400);
-        $response->assertJson(['message' => 'Invalid platform type: invalid']);
+        $response->assertStatus(422);
+        $response->assertJson(['message' => 'The selected platform is invalid.']);
     }
 }

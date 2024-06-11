@@ -19,7 +19,7 @@ class SocialMediaServiceTest extends TestCase
         $socialMedia = new SocialMedia($platform, $content);
 
         $socialMediaFactory->expects($this->once())
-            ->method('createPost')
+            ->method('create')
             ->with($platform, $content)
             ->willReturn($socialMedia);
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Core\Domain\SocialMidia\Services\SocialMediaService;
-use Illuminate\Http\Request;
+use App\Http\Requests\SocialMediaRequest;
 
 class SocialMediaController extends Controller
 {
@@ -14,7 +14,7 @@ class SocialMediaController extends Controller
         $this->socialMediaService = $socialMediaService;
     }
 
-    public function postToSocialMedia(Request $request, $platform)
+    public function store(SocialMediaRequest $request, $platform)
     {
         try {
             $content = $request->get('content');

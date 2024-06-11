@@ -2,8 +2,8 @@
 
 use App\Core\Domain\Button\Entities\Button;
 use PHPUnit\Framework\TestCase;
-use App\Core\Domain\Button\Factories\ButtonFactoryImpl;
 use App\Core\Domain\Button\Repositories\ButtonRepository;
+use App\Core\Domain\Button\Factories\ButtonFactoryImpl;
 
 class ButtonFactoryImplTest extends TestCase
 {
@@ -13,7 +13,7 @@ class ButtonFactoryImplTest extends TestCase
         $buttonRepositoryMock->method('create')->willReturn(new Button('Test', 'IOS'));
 
         $factory = new ButtonFactoryImpl(['IOS' => $buttonRepositoryMock]);
-        $button = $factory->createButton('Test', 'IOS');
+        $button = $factory->create('Test', 'IOS');
 
         $this->assertInstanceOf(Button::class, $button);
         $this->assertEquals('Test', $button->getLabel());
@@ -30,6 +30,6 @@ class ButtonFactoryImplTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid button type: ANDROID');
 
-        $factory->createButton('Test', 'ANDROID');
+        $factory->create('Test', 'ANDROID');
     }
 }

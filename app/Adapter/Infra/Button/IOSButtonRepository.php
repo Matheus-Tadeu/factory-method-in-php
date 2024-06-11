@@ -9,9 +9,9 @@ class IOSButtonRepository implements ButtonRepository
 {
     private array $buttons;
 
-    public function create(string $label): Button
+    public function create(string $label, string $platform): Button
     {
-        $button = new Button($label, 'IOS');
+        $button = new Button($label, $platform);
         $this->buttons[] = $button;
         return $button;
     }

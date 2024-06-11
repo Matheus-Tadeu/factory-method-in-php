@@ -16,6 +16,6 @@ class SocialMediaService
 
     public function post(string $platform, string $content): SocialMedia
     {
-        return $this->socialMediaFactory->createPost($platform, $content);
+        return $this->socialMediaFactory->create($platform, $content);
     }
 }

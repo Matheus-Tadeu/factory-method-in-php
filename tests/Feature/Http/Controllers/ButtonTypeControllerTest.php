@@ -11,32 +11,32 @@ class ButtonTypeControllerTest extends TestCase
     public function testCreate()
     {
         $buttonTypeService = $this->createMock(ButtonTypeService::class);
-        $buttonTypeService->method('initialize')->willReturn(new Button('Test', 'IOS'));
+        $buttonTypeService->method('create')->willReturn(new Button('Test', 'ios'));
 
         $this->app->instance(ButtonTypeService::class, $buttonTypeService);
 
-        $response = $this->postJson('api/button', ['label' => 'Test', 'type' => 'IOS']);
+        $response = $this->postJson('api/button', ['label' => 'Test', 'platform' => 'ios']);
 
         $response->assertStatus(201);
-        $response->assertJson(['label' => 'Test', 'type' => 'IOS']);
+        $response->assertJson(['label' => 'Test', 'platform' => 'ios']);
     }
 
     public function testInvalidArgumentException()
     {
         $buttonTypeService = $this->createMock(ButtonTypeService::class);
-        $buttonTypeService->method('initialize')->will($this->throwException(new \InvalidArgumentException('Invalid button type')));
+        $buttonTypeService->method('create')->will($this->throwException(new \InvalidArgumentException('Invalid button type')));
 
         $this->app->instance(ButtonTypeService::class, $buttonTypeService);
 
         $response = $this->postJson('api/button', ['label' => 'Test', 'type' => 'ANDROID']);
 
-        $response->assertStatus(400);
+        $response->assertStatus(422);
     }
 
     public function testCreateWithInvalidType()
     {
         $buttonTypeService = $this->createMock(ButtonTypeService::class);
-        $buttonTypeService->method('initialize')->will($this->throwException(new \InvalidArgumentException('Invalid button type')));
+        $buttonTypeService->method('create')->will($this->throwException(new \InvalidArgumentException('Invalid button type')));
 
         $this->app->instance(ButtonTypeService::class, $buttonTypeService);
 

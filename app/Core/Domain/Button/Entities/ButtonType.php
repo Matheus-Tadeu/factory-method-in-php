@@ -4,6 +4,6 @@ namespace App\Core\Domain\Button\Entities;
 
 enum ButtonType
 {
-    const WINDOWS = 'WINDOWS';
-    const WEB = 'WEB';
+    const windows = 'windows';
+    const web = 'web';
 }

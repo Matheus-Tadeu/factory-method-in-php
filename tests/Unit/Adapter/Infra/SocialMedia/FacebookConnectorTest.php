@@ -4,7 +4,7 @@ namespace Tests\Unit\Adapter\Infra\SocialMedia;
 
 use App\Core\Domain\SocialMidia\Entities\SocialMedia;
 use PHPUnit\Framework\TestCase;
-use App\Adapter\Infra\SocialMedia\FacebookConnector;
+use App\Adapter\Infra\SocialMedia\FacebookRepository;
 
 class FacebookConnectorTest extends TestCase
 {
@@ -12,25 +12,13 @@ class FacebookConnectorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->facebookConnector = new FacebookConnector();
-    }
-
-    public function testLogIn()
-    {
-        $result = $this->facebookConnector->logIn();
-        $this->assertTrue($result);
-    }
-
-    public function testLogOut()
-    {
-        $result = $this->facebookConnector->logOut();
-        $this->assertTrue($result);
+        $this->facebookConnector = new FacebookRepository();
     }
 
     public function testCreatePost()
     {
         $content = 'Test content';
-        $post = $this->facebookConnector->createPost($content);
+        $post = $this->facebookConnector->create('facebook', $content);
 
         $this->assertInstanceOf(SocialMedia::class, $post);
         $this->assertEquals($content, $post->getContent());

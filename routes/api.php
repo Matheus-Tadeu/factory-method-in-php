@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/postToSocialMedia/{platform}', [SocialMediaController::class, 'postToSocialMedia']);
-Route::post('/button/', [ButtonTypeController::class, 'create']);
+Route::post('/postToSocialMedia/{platform}', [SocialMediaController::class, 'store']);
+Route::post('/button', [ButtonTypeController::class, 'store']);

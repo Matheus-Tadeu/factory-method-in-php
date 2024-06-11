@@ -4,13 +4,13 @@ namespace App\Core\Domain\Button\Entities;
 
 class Button
 {
-    private $label;
-    private $type;
+    private string $label;
+    private string $platform;
 
-    public function __construct(string $label, string $type)
+    public function __construct(string $label, string $platform)
     {
         $this->label = $label;
-        $this->type = $type;
+        $this->platform = $platform;
     }
 
     public function getLabel(): string
@@ -20,14 +20,14 @@ class Button
 
     public function getType(): string
     {
-        return $this->type;
+        return $this->platform;
     }
 
     public function toArray(): array
     {
         return [
             'label' => $this->label,
-            'type' => $this->type,
+            'platform' => $this->platform,
         ];
     }
 }

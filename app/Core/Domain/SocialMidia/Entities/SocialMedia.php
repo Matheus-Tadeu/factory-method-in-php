@@ -7,7 +7,7 @@ class SocialMedia
     private $platform;
     private $content;
 
-    public function __construct(string $content, string $platform)
+    public function __construct(string $platform, string $content)
     {
         $this->platform = $platform;
         $this->content = $content;

@@ -6,5 +6,5 @@ use App\Core\Domain\Button\Entities\Button;
 
 interface ButtonRepository
 {
-    public function create(string $label): Button;
+    public function create(string $label, string $platform): Button;
 }
