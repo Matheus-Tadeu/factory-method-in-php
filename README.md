@@ -14,7 +14,7 @@ Este projeto é um exemplo de implementação do padrão de design criacional Fa
 Para executar este projeto, você precisa ter o Docker instalado em sua máquina. Depois de clonar o repositório, você pode iniciar o projeto usando o seguinte comando:
 
 ```bash
-docker-compose up -d
+docker-compose up --build -d
 ```
 
 Este comando irá iniciar todos os serviços necessários para o projeto em containers Docker.

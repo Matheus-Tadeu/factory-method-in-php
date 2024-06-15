@@ -15,8 +15,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 EXPOSE 80
 
-CMD bash -c composer install
-    && if [ ! -f .env ]; then cp .env.example .env; fi
-    && chmod 777 .env
-    && php artisan key:generate
-    && php artisan serve --host=0.0.0.0 --port=80
+CMD bash -c composer install && if [ ! -f .env ]; then cp .env.example .env; fi && chmod 777 .env && php artisan key:generate && php artisan serve --host=0.0.0.0 --port=80
