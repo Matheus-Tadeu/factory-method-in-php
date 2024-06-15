@@ -1,4 +1,5 @@
 <?php
+namespace Tests\Unit\Domain\Button\Factories;
 
 use App\Core\Domain\Button\Entities\Button;
 use PHPUnit\Framework\TestCase;
