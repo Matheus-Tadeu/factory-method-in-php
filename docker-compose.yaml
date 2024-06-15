@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
+      - composer_data:/var/www/vendor
       - .:/var/www
     ports:
       - "9000:80"
@@ -29,3 +30,4 @@ networks:
 
 volumes:
   dbdata:
+  composer_data:
