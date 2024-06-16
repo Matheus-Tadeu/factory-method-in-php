@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Core\Domain\Button\Services\ButtonTypeService;
 use App\Http\Requests\CreateButtonRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Log;
 
@@ -12,11 +13,41 @@ use Illuminate\Support\Facades\Log;
  */
 class ButtonTypeController extends BaseController
 {
+    /**
+     * @var ButtonTypeService
+     */
     private ButtonTypeService $buttonTypeService;
 
+    /**
+     * @param ButtonTypeService $buttonTypeService
+     */
     public function __construct(ButtonTypeService $buttonTypeService)
     {
         $this->buttonTypeService = $buttonTypeService;
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/button",
+     *     summary="Get all buttons",
+     *     tags={"Get Buttons"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of buttons",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="0", type="object",
+     *                 @OA\Property(property="id", type="integer", example=1),
+     *                 @OA\Property(property="label", type="string", example="Click Me"),
+     *                 @OA\Property(property="platform", type="string", example="windows")
+     *             )
+     *         )
+     *     )
+     * )
+     */
+    public function index(): JsonResponse
+    {
+        $buttons = $this->buttonTypeService->all();
+        return response()->json($buttons->toArray());
     }
 
     /**
@@ -58,7 +89,7 @@ class ButtonTypeController extends BaseController
      *     )
      * )
      */
-    public function store(CreateButtonRequest $request)
+    public function store(CreateButtonRequest $request): JsonResponse
     {
         try {
             $label = $request->input('label');

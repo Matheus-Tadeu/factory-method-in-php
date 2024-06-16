@@ -4,22 +4,39 @@ namespace App\Core\Domain\Button\Factories;
 
 use App\Core\Domain\Attribute\Factories\ButtonFactory;
 use App\Core\Domain\Button\Entities\Button;
+use App\Core\Domain\Button\Repositories\IButtonRepository;
+use Illuminate\Support\Collection;
 
 class ButtonFactoryImpl implements ButtonFactory
 {
-    private $buttonRepositories;
+    /**
+     * @var IButtonRepository
+     */
+    private IButtonRepository $buttonRepository;
 
-    public function __construct(array $buttonRepositories)
+    /**
+     * @param IButtonRepository $buttonRepository
+     */
+    public function __construct(IButtonRepository $buttonRepository)
     {
-        $this->buttonRepositories = $buttonRepositories;
+        $this->buttonRepository = $buttonRepository;
     }
 
+    /**
+     * @return Collection<Button>
+     */
+    public function all(): Collection
+    {
+        return $this->buttonRepository->all();
+    }
+
+    /**
+     * @param string $label
+     * @param string $platform
+     * @return Button
+     */
     public function create(string $label, string $platform): Button
     {
-        if (!isset($this->buttonRepositories[$platform])) {
-            throw new \InvalidArgumentException("Invalid button type: $platform");
-        }
-
-        return $this->buttonRepositories[$platform]->create($label, $platform);
+        return $this->buttonRepository->create($label, $platform);
     }
 }

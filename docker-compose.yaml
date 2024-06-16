@@ -10,6 +10,7 @@ services:
       - "9000:80"
     networks:
       - app-network
+    command: /var/www/docker-entrypoint.sh
 
   db:
     image: mysql:5.7

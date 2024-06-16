@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Adapter\Infra\Button\IOSButtonRepository;
-use App\Adapter\Infra\Button\WindowsButtonRepository;
+use App\Adapter\Infra\Button\ButtonRepository;
 use App\Adapter\Infra\SocialMedia\FacebookRepository;
 use App\Adapter\Infra\SocialMedia\LinkdinRepository;
 use App\Core\Domain\Attribute\Factories\ButtonFactory;
@@ -20,11 +19,8 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(ButtonFactory::class, function ($app) {
-            $buttonRepositories = [
-                'windows' => $app->make(WindowsButtonRepository::class),
-                'ios' => $app->make(IOSButtonRepository::class),
-            ];
-            return new ButtonFactoryImpl($buttonRepositories);
+            $buttonRepository = $app->make(ButtonRepository::class);
+            return new ButtonFactoryImpl($buttonRepository);
         });
         $this->app->bind(SocialMediaFactory::class, function ($app) {
             $socialMediaRepositories = [

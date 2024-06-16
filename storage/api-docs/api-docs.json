@@ -6,6 +6,44 @@
     },
     "paths": {
         "/api/button": {
+            "get": {
+                "tags": [
+                    "Get Buttons"
+                ],
+                "summary": "Get all buttons",
+                "operationId": "d630e9a5c27be7092d7e042c04cb7ab4",
+                "responses": {
+                    "200": {
+                        "description": "List of buttons",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "0": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "label": {
+                                                    "type": "string",
+                                                    "example": "Click Me"
+                                                },
+                                                "platform": {
+                                                    "type": "string",
+                                                    "example": "windows"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Create Button"

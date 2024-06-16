@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Core\Domain\Attribute\Factories;
+namespace App\Core\Domain\Button\Repositories;
 
 use App\Core\Domain\Button\Entities\Button;
 use Illuminate\Support\Collection;
 
-interface ButtonFactory
+interface IButtonRepository
 {
     /**
-     * @param String $label
+     * @param string $label
      * @param string $platform
      * @return Button
      */
-    public function create(String $label, string $platform): Button;
+    public function create(string $label, string $platform): Button;
 
     /**
      * @return Collection<Button>
