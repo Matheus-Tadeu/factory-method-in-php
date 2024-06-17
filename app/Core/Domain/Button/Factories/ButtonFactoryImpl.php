@@ -1,21 +1,35 @@
 <?php
 
+/**
+ * Namespace for the Button Factories
+ */
 namespace App\Core\Domain\Button\Factories;
 
-use App\Core\Domain\Attribute\Factories\ButtonFactory;
 use App\Core\Domain\Button\Entities\Button;
 use App\Core\Domain\Button\Repositories\IButtonRepository;
+use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Collection;
 
+/**
+ * Class ButtonFactoryImpl
+ *
+ * This class implements the `ButtonFactory` interface and provides methods to create and retrieve `Button` objects.
+ */
 class ButtonFactoryImpl implements ButtonFactory
 {
     /**
      * @var IButtonRepository
+     *
+     * The repository for `Button` objects.
      */
     private IButtonRepository $buttonRepository;
 
     /**
+     * ButtonFactoryImpl constructor.
+     *
      * @param IButtonRepository $buttonRepository
+     *
+     * Initializes the `$buttonRepository` property.
      */
     public function __construct(IButtonRepository $buttonRepository)
     {
@@ -23,6 +37,8 @@ class ButtonFactoryImpl implements ButtonFactory
     }
 
     /**
+     * Retrieves all `Button` objects.
+     *
      * @return Collection<Button>
      */
     public function all(): Collection
@@ -31,6 +47,8 @@ class ButtonFactoryImpl implements ButtonFactory
     }
 
     /**
+     * Creates a new `Button` object with the provided label and platform.
+     *
      * @param string $label
      * @param string $platform
      * @return Button

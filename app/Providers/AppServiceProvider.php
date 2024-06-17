@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Adapter\Infra\Button\ButtonRepository;
 use App\Adapter\Infra\SocialMedia\FacebookRepository;
 use App\Adapter\Infra\SocialMedia\LinkdinRepository;
-use App\Core\Domain\Attribute\Factories\ButtonFactory;
+use App\Core\Domain\Button\Factories\ButtonFactory;
 use App\Core\Domain\Button\Factories\ButtonFactoryImpl;
 use App\Core\Domain\SocialMidia\Factories\SocialMediaFactory;
 use App\Core\Domain\SocialMidia\Factories\SociaMediaFactoryImpl;

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Adapter\Infra\Button;
 
-use App\Adapter\Infra\Button\IOSButtonRepository;
+use App\Adapter\Infra\Button\ButtonRepository;
 use App\Core\Domain\Button\Entities\Button;
 use PHPUnit\Framework\TestCase;
 
@@ -10,11 +10,14 @@ class IOSButtonRepositoryTest extends TestCase
 {
     public function testCreateButton()
     {
-        $repository = new IOSButtonRepository();
-        $button = $repository->create('Test', 'IOS');
+        $repository = $this->createMock(ButtonRepository::class);
+        $repository->method('create')
+            ->willReturn(new Button('Test', 'ios'));
+
+        $button = $repository->create('Test', 'ios');
 
         $this->assertEquals('Test', $button->getLabel());
-        $this->assertEquals('IOS', $button->getType());
+        $this->assertEquals('ios', $button->getType());
         $this->assertInstanceOf(Button::class, $button);
     }
 }

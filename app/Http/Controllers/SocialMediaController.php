@@ -4,11 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Core\Domain\SocialMidia\Services\SocialMediaService;
 use App\Http\Requests\SocialMediaRequest;
+use Illuminate\Http\JsonResponse;
 
+/**
+ * Class SocialMediaController
+ *
+ * This controller handles the requests related to social media operations.
+ *
+ * @package App\Http\Controllers
+ */
 class SocialMediaController extends Controller
 {
+    /**
+     * @var SocialMediaService
+     */
     private SocialMediaService $socialMediaService;
 
+    /**
+     * SocialMediaController constructor.
+     *
+     * @param SocialMediaService $socialMediaService
+     */
     public function __construct(SocialMediaService $socialMediaService)
     {
         $this->socialMediaService = $socialMediaService;
@@ -58,8 +74,15 @@ class SocialMediaController extends Controller
      *         )
      *     )
      * )
+     *
+     * This method handles the request to post content to a social media platform.
+     *
+     * @param SocialMediaRequest $request The request object containing the content to be posted.
+     * @param string $platform The platform to which the content should be posted.
+     *
+     * @return JsonResponse The response object containing the result of the operation.
      */
-    public function store(SocialMediaRequest $request, $platform)
+    public function store(SocialMediaRequest $request, string $platform): JsonResponse
     {
         try {
             $content = $request->get('content');

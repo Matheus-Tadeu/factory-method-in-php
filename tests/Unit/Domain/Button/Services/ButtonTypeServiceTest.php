@@ -3,7 +3,7 @@
 namespace Tests\Unit\Domain\Button\Services;
 
 use App\Core\Domain\Button\Entities\Button;
-use App\Core\Domain\Attribute\Factories\ButtonFactory;
+use App\Core\Domain\Button\Factories\ButtonFactory;
 use App\Core\Domain\Button\Services\ButtonTypeService;
 use PHPUnit\Framework\TestCase;
 
