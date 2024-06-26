@@ -1,53 +1,42 @@
-# :factory: Projeto Factory Method em PHP
+# Projeto Factory Method em PHP
 
-Este projeto é um exemplo de implementação do padrão de design criacional Factory Method em PHP. Ele demonstra como criar objetos sem especificar a classe exata a ser criada.
+Este projeto é um exemplo prático de como implementar o padrão de design Factory Method em PHP, utilizando o Laravel como framework e Composer para gerenciamento de dependências.
 
 ## Tecnologias Utilizadas
+- [PHP](https://www.php.net/): Linguagem de programação utilizada para desenvolver o projeto.
+- [Laravel](https://laravel.com/): Framework utilizado para facilitar o desenvolvimento de aplicações PHP.
+- [Composer](https://getcomposer.org/): Ferramenta de gerenciamento de projetos e compilação de código.
+- [Docker](https://www.docker.com/): Plataforma utilizada para containerização da aplicação.
+- [MySQL](https://www.mysql.com/): Sistema de gerenciamento de banco de dados utilizado.
+- [Swagger](https://swagger.io/): Ferramenta para documentação de APIs.
+- [PHPUnit](https://phpunit.de/): Ferramenta utilizada para realizar os testes unitários.
 
-- PHP
-- Laravel
-- Docker
-- Swagger
 
-## Como Executar o Projeto
+## Como subir o projeto
 
-Para executar este projeto, você precisa ter o Docker instalado em sua máquina. Depois de clonar o repositório, você pode iniciar o projeto usando o seguinte comando:
-
+Para subir o projeto, você deve ter o Docker instalado em sua máquina. Em seguida, execute o seguinte comando:
 ```bash
 docker-compose up --build -d
 ```
 
-Este comando irá iniciar todos os serviços necessários para o projeto em containers Docker.
-
 
 ## Documentação da API
 
-A documentação da API para este projeto está disponível através do Swagger. Você pode acessar a documentação da API navegando para o seguinte URL após iniciar o projeto:
-
-```
-http://localhost:9000/api/documentation
-```
-
-Substitua `localhost:9000` pelo endereço e porta corretos se você estiver executando o projeto em um ambiente diferente.
+A documentação Swagger do projeto pode ser acessada através do seguinte link quando o projeto estiver rodando: http://localhost:9000/api/documentation
 
 
-## Executando os Testes
+## Como executar os testes
 
-Para executar os testes, você pode usar o seguinte comando:
+Para rodar os testes unitários, execute o seguinte comando:
 
 ```bash
 docker-compose exec app ./vendor/bin/phpunit
 ```
 
+
 ## Coverage
 
 O relatório de cobertura de testes pode ser encontrado na seguinte URL: [Link para o relatório de cobertura](http://localhost:63342/creational-pattern-factory-method-in-php/tests/Coverage/html/index.html)
-
-## :bulb: Padrão Factory Method
-
-O padrão Factory Method é um padrão de design criacional que fornece uma interface para criar objetos em uma superclasse, mas permite que as subclasses alterem o tipo de objetos que serão criados.
-
-Neste projeto, o padrão Factory Method é usado para criar diferentes tipos de botões e postagens em mídias sociais, dependendo da plataforma especificada.
 
 
 ## Contribuições
@@ -58,11 +47,6 @@ Contribuições para este projeto são bem-vindas. Por favor, abra um problema o
 ## Autor
 
 Matheus Tadeu - [LinkedIn](https://www.linkedin.com/in/matheus-tadeu-482a00134/)
-
-
-## :books: Referências
-
-Este projeto foi baseado nos conceitos e exemplos encontrados no [Refactoring Guru](https://refactoring.guru/).
 
 
 ## Licença
