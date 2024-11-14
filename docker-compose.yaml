@@ -20,7 +20,7 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - dbdata:/var/lib/mysql
+      - data:/var/lib/mysql
     networks:
       - app-network
 
@@ -29,5 +29,5 @@ networks:
     driver: bridge
 
 volumes:
-  dbdata:
+  data:
   composer_data:

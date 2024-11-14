@@ -19,24 +19,28 @@ Para subir o projeto, você deve ter o Docker instalado em sua máquina. Em segu
 docker-compose up --build -d
 ```
 
+## Como acessar a documentação da API
 
-## Documentação da API
+Acesse a documentação da API através da seguinte URL: [Link para a documentação da API](http://localhost:8080/api/documentation)
 
-A documentação Swagger do projeto pode ser acessada através do seguinte link quando o projeto estiver rodando: http://localhost:9000/api/documentation
-
-
-## Como executar os testes
-
-Para rodar os testes unitários, execute o seguinte comando:
-
+Para atualizar a documentação da API, execute o seguinte comando:
 ```bash
-docker-compose exec app ./vendor/bin/phpunit
+make swagger
 ```
 
+## Como rodar os testes
+```
+make test
+```
 
 ## Coverage
 
-O relatório de cobertura de testes pode ser encontrado na seguinte URL: [Link para o relatório de cobertura](http://localhost:63342/creational-pattern-factory-method-in-php/tests/Coverage/html/index.html)
+Comando para criar ou atualizar o coverage dos testes:
+```bash
+make coverage
+```
+
+O relatório de cobertura de testes pode ser encontrado na seguinte URL: [Link para o relatório de cobertura](http://localhost:63342/factory-method-in-php/Coverage/html/index.html)
 
 
 ## Contribuições
