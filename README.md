@@ -21,7 +21,7 @@ docker-compose up --build -d
 
 ## Como acessar a documentação da API
 
-Acesse a documentação da API através da seguinte URL: [Link para a documentação da API](http://localhost:8080/api/documentation)
+Acesse a documentação da API através da seguinte URL: [Link para a documentação da API](http://localhost:9000/api/documentation)
 
 Para atualizar a documentação da API, execute o seguinte comando:
 ```bash
